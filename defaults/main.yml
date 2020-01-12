@@ -1,2 +1,5 @@
 ---
-# defaults file for trellis_install_wp_cli_via_composer
+wp_cli_composer_global_remove_packages: []
+
+wp_cli_composer_global_require_packages:
+  - "wp-cli/wp-cli-bundle:{{ wp_cli_version }}"
