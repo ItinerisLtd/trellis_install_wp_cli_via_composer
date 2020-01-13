@@ -10,6 +10,7 @@
     global_command: yes
     arguments: "{{ wp_cli_composer_global_remove_packages | join(' ') }}"
   when: wp_cli_composer_global_remove_packages | length
+  become: true
   become_user: "{{ web_user }}"
 
 - name: Install WP-CLI via composer
@@ -17,6 +18,7 @@
     command: require
     global_command: yes
     arguments: "{{ wp_cli_composer_global_require_packages | join(' ') }}"
+  become: true
   become_user: "{{ web_user }}"
 
 - name: Symlink WP-CLI
@@ -28,6 +30,7 @@
 
 - name: Install WP-CLI packages
   command: "wp package install {{ item }}"
+  become: true
   become_user: "{{ web_user }}"
   register: wp_cli_packages_installed
   changed_when:

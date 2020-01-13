@@ -127,7 +127,7 @@ wp_cli_completion_path: /etc/bash_completion.d/wp-completion.bash
       # galaxy.yml
 
     + - src: itinerisltd.trellis_install_wp_cli_via_composer
-    + version: 0.1.1 # Check for latest version!
+    + version: XXX.YYY.ZZZ # Check for latest version!
     ```
 
 2. Replace `wp-cli` role with `itinerisltd.trellis_install_wp_cli_via_composer`

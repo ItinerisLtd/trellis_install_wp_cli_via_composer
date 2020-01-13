@@ -16,6 +16,6 @@ galaxy_info:
   galaxy_tags:
     - trellis
     - wordpress
-    - wp-cli
+    - wpcli
 
   dependencies: []
