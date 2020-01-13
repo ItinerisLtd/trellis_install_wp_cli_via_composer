@@ -47,4 +47,3 @@ workflows:
       - test-ansible-galaxy-role/syntax-check:
           name: syntax-check-ansible-2.7
           ansible-version: ~=2.7.0
-
