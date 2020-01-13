@@ -1,9 +1,4 @@
 ---
-- name: Remove WP-CLI binary installed by Trellis
-  file:
-    path: "{{ wp_cli_bin_path }}"
-    state: absent
-
 - name: Remove WP-CLI bash completion file installed by Trellis
   file:
     path: "{{ wp_cli_completion_path }}"
@@ -24,11 +19,18 @@
     arguments: "{{ wp_cli_composer_global_require_packages | join(' ') }}"
   become_user: "{{ web_user }}"
 
+- name: Symlink WP-CLI
+  file:
+    src: "/home/{{ web_user }}/.composer/vendor/bin/wp" # TODO: Find the path dynamically.
+    dest: "{{ wp_cli_bin_path }}"
+    mode: "0755"
+    state: link
+
 - name: Install WP-CLI packages
-  command: wp package install {{ item }}
+  command: "wp package install {{ item }}"
   become_user: "{{ web_user }}"
   register: wp_cli_packages_installed
   changed_when:
     - "'Nothing to install or update' not in wp_cli_packages_installed.stdout"
     - "'Package operations: 0 installs, 0 updates, 0 removals' not in wp_cli_packages_installed.stdout"
-  with_items: "{{ wp_cli_packages }}"
+  loop: "{{ wp_cli_packages }}"
