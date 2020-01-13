@@ -2,7 +2,7 @@
 wp_cli_composer_global_remove_packages: []
 
 wp_cli_composer_global_require_packages:
-  - "wp-cli/wp-cli-bundle:{{ wp_cli_version }}"
+  - "wp-cli/wp-cli-bundle:^2.4.0"
 
 # Taken form https://github.com/roots/trellis/blob/4425669bab0665f0c9aed92c80eb9b8c54f63e85/roles/wp-cli/defaults/main.yml#L10
 wp_cli_packages: []
